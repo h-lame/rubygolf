@@ -35,7 +35,7 @@ class Golf
       (1..n).to_a.map { |x|
         r = x
         r = "fizz" if x % 3 == 0
-        r.is_a?(String) ? (r += "buzz") : (r = "buzz") if x % 5 == 0
+        r.is_a?(String) ? r += "buzz" : r = "buzz" if x % 5 == 0
         r
       }
     end
@@ -54,28 +54,15 @@ class Golf
     end
 
     def hole9 n
-      lines = File.readlines n
-      threshold = lines.count / 2
-      d = lines.map{|r| r.strip.split(',')}
-      votes = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
-      result = votes.to_a.sort_by {|x| x[-1]}.reverse
-      if result.first[-1] >= threshold
-        result.first[0]
-      else
-        loser = result.last[0]
-        votes.each { |v| v.shift if v[0] == loser}
-        votes = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
-        result = votes.to_a.sort_by {|x| x[-1]}.reverse
-        if result.first[-1] >= threshold
-          result.first[0]
-        else
-          loser = result.last[0]
-          votes.each { |v| v.shift if v[0] == loser}
-          votes = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
-          result = votes.to_a.sort_by {|x| x[-1]}.reverse
-          result.first[0]
-        end
-      end
+      l = File.readlines n
+      t = l.size / 2
+      d = l.map{|r| r.split(',').map(&:strip)}
+      w = proc { |d|
+        v = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
+        r = v.to_a.sort_by {|x| x[-1]}.reverse
+        r[0][-1] >= t ? r[0][0] : w.call(d.map { |v| v[0] == r[-1][0] ? v[1..-1] : v })
+      }
+      w.call d
     end
   end
 end
