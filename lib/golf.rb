@@ -60,9 +60,9 @@ class Golf
       w = proc { |d|
         v = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
         r = v.to_a.sort_by {|x| x[-1]}.reverse
-        r[0][-1] >= t ? r[0][0] : w.call(d.map { |v| v[0] == r[-1][0] ? v[1..-1] : v })
+        r[0][-1] >= t ? r[0][0] : w[d.map { |v| v[0] == r[-1][0] ? v[1..-1] : v }]
       }
-      w.call d
+      w[d]
     end
   end
 end
