@@ -35,7 +35,7 @@ class Golf
       (1..n).to_a.map { |x|
         r = x
         r = "fizz" if x % 3 == 0
-        r.is_a?(String) ? r += "buzz" : r = "buzz" if x % 5 == 0
+        r.to_s == r ? r += "buzz" : r = "buzz" if x % 5 == 0
         r
       }
     end
