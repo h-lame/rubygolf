@@ -26,13 +26,14 @@ class Golf
     end
 
     def hole5 n
-      return [] if n == []
-      h, *t = n
-      o = [[h]]
-      t.size.times do |x|
-        o << [h, *t[0..x]]
-      end
-      (o + hole5(t)).sort {|a,b| x = a.size <=> b.size; x == 0 ? a[0] <=> b[0] : x}
+      n == [] ? [] : (
+        h, *t = n
+        o = [[h]]
+        t.size.times do |x|
+          o << [h, *t[0..x]]
+        end
+        (o + hole5(t)).sort {|a,b| x = a.size <=> b.size; x == 0 ? a[0] <=> b[0] : x}
+      )
     end
 
     def hole6 n
