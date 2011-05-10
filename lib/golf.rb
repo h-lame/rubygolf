@@ -9,7 +9,7 @@ module Golf
   end
 
   def hole3 n
-    n == 1 ? 1 : n * hole3(n-1)
+    hole1(1..n)
   end
 
   def hole4 n
