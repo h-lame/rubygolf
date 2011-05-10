@@ -62,7 +62,7 @@ class << Golf = ''
         h[c] = h[c] + 1
         h
       }
-      r = v.sort_by {|x| x[Z]}.reverse
+      r = v.sort_by(&:last).reverse
       r[0][Z] >= t ? r[0][0] : w[d.map { |v| v[0] == r[Z][0] ? v[1..Z] : v }]
     }
     w[d]
