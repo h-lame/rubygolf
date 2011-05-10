@@ -41,16 +41,15 @@ B=[0,
   ','
     l = IO.readlines n
     t = l.size / 2
-    d = l.map{|r| r.split(",").map &:strip }
     w = proc { |d|
-      v = d.map { |v| v[0] }.inject(Hash.new 0) { |h,c|
-        h[c] = h[c] + 1
+      v = d.inject(Hash.new 0) { |h,c|
+        h[c[0]] = h[c[0]] + 1
         h
       }
-      r = v.sort_by(&:last).reverse
-      r[0][Z] >= t ? r[0][0] : w[d.map { |v| v[0] == r[Z][0] ? v[1..Z] : v }]
+      r = v.sort_by(&:last)
+      r[Z][Z] >= t ? r[Z][0] : w[d.map { |v| v[0] == r[0][0] ? v[1..Z] : v }]
     }
-    w[d]
+    w[l.map{|r| r.split(",").map &:strip }]
   ']
 (1..9).map {|i|
   eval "
@@ -58,3 +57,5 @@ def Golf.hole#{i} n
   #{B[i]}
 end"
 }
+    
+
