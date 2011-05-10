@@ -54,7 +54,7 @@ module Golf
   end
 
   def hole9 n
-    l = File.readlines n
+    l = IO.readlines n
     t = l.size / 2
     d = l.map{|r| r.split(',').map &:strip }
     w = proc { |d|
