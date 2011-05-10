@@ -1,7 +1,7 @@
 class << Golf = ''
   Z=-1
   def hole1 n
-    n.inject(1){|s,i| s * i}
+    n.inject :*
   end
 
   def hole2 n
