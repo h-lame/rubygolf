@@ -1,0 +1,17 @@
+# This solution seems more correct, but it's longer... :(
+def Gold.hole9 n
+  l = IO.readlines n
+  t = l.size / 2.0
+  w = proc { |a|
+    e = a.inject(Hash.new 0) { |h,c|
+      h[c[0]] = h[c[0]] + 1
+      h
+    }
+    r = e.sort_by {|x| x[Z]}
+    (r[Z][Z] >= t || r.size == 2) ? r[Z][0] : w[a.map { |v| 
+      v.delete r[0][0]
+      v
+    }.select &:any?]
+  }
+  w[l.map{|s| s.split(",").map &:strip }]
+end
