@@ -1,4 +1,4 @@
-module Golf
+class << Golf = ''
   Z=-1
   def hole1 n
     n.inject(1){|s,i| s * i}
@@ -67,5 +67,4 @@ module Golf
     }
     w[d]
   end
-  extend self
 end
