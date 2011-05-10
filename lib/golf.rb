@@ -13,14 +13,8 @@ module Golf
   end
 
   def hole4 n
-    n.map { |w| case w
-      when /man/
-        "hat(#{w})"
-      when /dog/ 
-        w.gsub /\)$/, '(bone))'
-      when /cat/ 
-        w.gsub /cat/, 'dead'
-      end
+    n.map { |w| 
+      w =~ /man/ ? "hat(#{w})" : w.gsub(/dog(.*)\)$/, 'dog\1(bone))').gsub(/cat/, 'dead')
     }
   end
 
