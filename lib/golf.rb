@@ -38,8 +38,7 @@ class Golf
 
     def hole6 n
       (1..n).map { |x|
-        r = x
-        r = "fizz" if x % 3 == 0
+        r = x % 3 == 0 ? "fizz" : x
         r.to_s == r ? r += "buzz" : r = "buzz" if x % 5 == 0
         r
       }
