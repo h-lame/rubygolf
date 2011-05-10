@@ -14,7 +14,7 @@ class << Golf = ''
 
   def hole4 n
     n.map { |w| 
-      w =~ /man/ ? "hat(#{w})" : w.gsub(/dog(.*)\)$/, 'dog\1(bone))').gsub(/cat/, 'dead')
+      w =~ /man/ ? "hat(#{w})" : w.gsub(/(dog.*)\)$/, '\1(bone))').gsub(/cat/, 'dead')
     }
   end
 
