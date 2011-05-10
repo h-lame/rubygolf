@@ -5,7 +5,7 @@ module Golf
   end
 
   def hole2 n
-    n.split.sort_by{|w| w[1]}.join' '
+    n.split.sort_by{|w| w[1]} * ' '
   end
 
   def hole3 n
@@ -50,7 +50,7 @@ module Golf
     n[1..Z].inject([[n[0]]]) { |r, x|
       r[Z][Z]+1 == x ? r[Z] << x : r << [x]
       r
-    }.map { |x| [x[0], x[Z]].uniq.join'-' }
+    }.map { |x| [x[0], x[Z]].uniq * '-' }
   end
 
   def hole8 n
