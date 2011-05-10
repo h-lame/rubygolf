@@ -1,4 +1,5 @@
 class Golf
+  Z=-1
   class << self
     def hole1 n
       n.inject(1){|s,i| s * i}
@@ -41,10 +42,10 @@ class Golf
     end
 
     def hole7 n
-      n[1..-1].inject([[n[0]]]) { |r, x|
-        r[-1][-1]+1 == x ? r[-1] << x : r << [x]
+      n[1..Z].inject([[n[0]]]) { |r, x|
+        r[Z][Z]+1 == x ? r[Z] << x : r << [x]
         r
-      }.map { |x| [x[0], x[-1]].uniq.join'-' }
+      }.map { |x| [x[0], x[Z]].uniq.join'-' }
     end
 
     def hole8 n
@@ -59,8 +60,8 @@ class Golf
       d = l.map{|r| r.split(',').map(&:strip)}
       w = proc { |d|
         v = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
-        r = v.to_a.sort_by {|x| x[-1]}.reverse
-        r[0][-1] >= t ? r[0][0] : w[d.map { |v| v[0] == r[-1][0] ? v[1..-1] : v }]
+        r = v.to_a.sort_by {|x| x[Z]}.reverse
+        r[0][Z] >= t ? r[0][0] : w[d.map { |v| v[0] == r[Z][0] ? v[1..Z] : v }]
       }
       w[d]
     end
