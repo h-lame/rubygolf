@@ -15,9 +15,12 @@ class Golf
 
     def hole4 n
       n.map { |w| case w
-        when /man/ : "hat(#{w})"
-        when /dog/ : w.gsub /\)$/, '(bone))'
-        when /cat/ : w.gsub /cat/, 'dead'
+        when /man/
+          "hat(#{w})"
+        when /dog/ 
+          w.gsub /\)$/, '(bone))'
+        when /cat/ 
+          w.gsub /cat/, 'dead'
         end
       }
     end
