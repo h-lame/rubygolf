@@ -16,8 +16,8 @@ class Golf
     def hole4 n
       n.map { |w| case w
         when /man/ : "hat(#{w})"
-        when /dog/ : w.gsub(/\)$/, '(bone))')
-        when /cat/ : w.gsub(/cat/, 'dead')
+        when /dog/ : w.gsub /\)$/, '(bone))'
+        when /cat/ : w.gsub /cat/, 'dead'
         end
       }
     end
@@ -57,7 +57,7 @@ class Golf
     def hole9 n
       l = File.readlines n
       t = l.size / 2
-      d = l.map{|r| r.split(',').map(&:strip)}
+      d = l.map{|r| r.split(',').map &:strip }
       w = proc { |d|
         v = d.map { |v| v[0] }.inject(Hash.new(0)) { |h,c| h[c] = h[c] + 1;h}
         r = v.to_a.sort_by {|x| x[Z]}.reverse
