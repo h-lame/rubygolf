@@ -27,7 +27,7 @@ B=[0,
     b = "buzz"
     (1..n).map { |x|
       r = x % 3 == 0 ? "fizz" : x
-      x % 5 == 0 ? r.to_s == r ? r += b : r = b : r
+      x % 5 == 0 ? r.to_s == r ? r + b : b : r
     }
   ','
     n[1..Z].inject([[n[0]]]) { |r, x|
