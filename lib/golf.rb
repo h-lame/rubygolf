@@ -1,4 +1,4 @@
-Golf = ''
+Golf = Hash
 Z=-1
 B=[0,
   '
@@ -42,7 +42,7 @@ B=[0,
     l = IO.readlines n
     t = l.size / 2
     w = proc { |d|
-      v = d.inject(Hash.new 0) { |h,c|
+      v = d.inject(new 0) { |h,c|
         h[c[0]] = h[c[0]] + 1
         h
       }
