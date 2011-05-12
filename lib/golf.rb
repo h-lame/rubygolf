@@ -14,10 +14,7 @@ B=[0,
   },'
     (1..n.size).map { |x|
       [*n.each_cons(x)]
-    }.flatten(1).sort {|a,b|
-      x = a.size <=> b.size
-      x == 0 ? a[0] <=> b[0] : x
-    }
+    }.flatten 1
   ','
     b = "buzz"
     (1..n).map { |x|

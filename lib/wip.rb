@@ -1,3 +1,13 @@
+# This solution does the sort, but we don't need to because the examples are already in numerical order
+def Gold.hole5 n
+  (1..n.size).map { |x|
+    [*n.each_cons(x)]
+  }.flatten(1).sort {|a,b|
+    x = a.size <=> b.size
+    x == 0 ? a[0] <=> b[0] : x
+  }
+end
+
 # This solution seems more correct, but it's longer... :(
 def Gold.hole9 n
   l = IO.readlines n
