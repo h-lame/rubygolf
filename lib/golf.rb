@@ -12,17 +12,12 @@ B=[0,
       w =~ /man/ ? "hat(#{w})" : w.gsub(/(dog.*)\)$/, '\1(bone))').gsub(/cat/, 'dead')
     }
   },'
-    n == [] ? [] : (
-      h, *t = n
-      o = [[h]]
-      t.size.times { |x|
-        o << [h, *t[0..x]]
-      }
-      (o + hole5(t)).sort {|a,b|
-        x = a.size <=> b.size
-        x == 0 ? a[0] <=> b[0] : x
-      }
-    )
+    (1..n.size).map { |x|
+      [*n.each_cons(x)]
+    }.flatten(1).sort {|a,b|
+      x = a.size <=> b.size
+      x == 0 ? a[0] <=> b[0] : x
+    }
   ','
     b = "buzz"
     (1..n).map { |x|
@@ -57,5 +52,3 @@ def Golf.hole#{i} n
   #{B[i]}
 end"
 }
-    
-
