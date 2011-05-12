@@ -43,7 +43,7 @@ B=[0,
     t = l.size / 2
     w = proc { |d|
       v = d.inject(new 0) { |h,c|
-        h[c[0]] = h[c[0]] + 1
+        h[c[0]] += 1
         h
       }
       r = v.sort_by(&:last)
